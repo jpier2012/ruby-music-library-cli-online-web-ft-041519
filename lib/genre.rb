@@ -33,6 +33,11 @@ class Genre
     song.instance_variable_set(:@genre, self) if song.genre.nil?
     find_song = @songs.find { |track| track == song }
     find_song ? find_song : @songs << song
+    if @songs.find { |track| track == song }
+    else
+      @songs << song
+    end
+    song
   end
 
   def artists
